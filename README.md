@@ -12,10 +12,6 @@ Currently IBM Schematics only supports terraform version 0.11, but modules are i
 
 ![ALB Cert](./.docs/cluster_alb_cert.png)
 
-2. Deny Namespace Traffic
-
-![Deny Namespace Traffic](.docs/deny_namespace_traffic.png)
-
 ### Table of Contents
 
 1. [IKS on VPC Cluster](##iks%20%on%20%vpc%20cluster)
