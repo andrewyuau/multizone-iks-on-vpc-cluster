@@ -2,7 +2,7 @@
 # Sensitive Account Variables
 ##############################################################################
 
-variable ibmcloud_apikey {
+variable ibmcloud_api_key {
   description = "The IBM Cloud platform API key needed to deploy IAM enabled resources"
 }
 
@@ -15,17 +15,10 @@ variable ibmcloud_apikey {
 
 variable ibm_region {
   description = "IBM Cloud region where all resources will be deployed"
-  default     = "us-south"
 }
 
 variable resource_group {
   description = "Name of resource group to provision resources"
-  default     = "default"
-}
-
-variable generation {
-  description = "Generation of VPC architecture. Currently IKS is only available in gen 1"
-  default     = 1
 }
 
 ##############################################################################
@@ -36,12 +29,29 @@ variable generation {
 ##############################################################################
 
 variable vpc_name {
-  description = "Name of VPC where cluster is to be created"
+  description = "ID of VPC where cluster is to be created"
+  default     = "jv-test-vpc"
 }
 
-variable subnet_ids {
-  description = "List of subnet IDs [zone 1, zone 2, zone 3]"
+variable cluster_zones {
+  description = "List maps containing a zone number and the id of a subnet in that zone. Can be used to create a cluster on any number of subnets in a single region"
   type        = "list"
+    /*
+   example =[
+    {
+      zone     = 1
+      subnet_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    },
+    {
+      zone     = 2
+      subnet_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    },
+    {
+      zone     = 3
+      subnet_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+  ]
+  */
 }
 
 
@@ -54,13 +64,14 @@ variable subnet_ids {
 
 variable cluster_name {
   description = "name for the iks cluster"
-  default     = "multizone-iks-on-vpc"
+  default     = "iks-on-vpc-cluter"
 }
 
 variable machine_type {
   description = "Machine type for the IKS Cluster"
   default     = "b2.4x16"
 }
+
 
 variable worker_count {
   description = "Number of workers per zone"
@@ -73,7 +84,7 @@ variable disable_pse {
 }
 
 variable enable_albs {
-  description = "enable ALBs"
+  description = "Enable ALBs for cluster"
   default     = true
 }
 

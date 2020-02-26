@@ -1,11 +1,12 @@
 ##############################################################################
 # IBM Cloud Provider
+# > Remove for use in schematics
 ##############################################################################
 
 provider ibm {
-  ibmcloud_api_key      = "${var.ibmcloud_apikey}"
+  ibmcloud_api_key      = "${var.ibmcloud_api_key}"
   region                = "${var.ibm_region}"
-  generation            = "${var.generation}"
+  generation            = 1 
   ibmcloud_timeout      = 60
 }
 

@@ -4,7 +4,8 @@
 
 data ibm_resource_instance cms {
   name              = "${var.cms_name}"
-  resource_group_id = "${data.ibm_resource_group.resource_group.id}"
+  resource_group_id = "${var.resource_group_id}" # "${data.ibm_resource_group.resource_group.id}"
+  location          = "${var.ibm_region}"
   service           = "cloudcerts"
 }
 
@@ -36,9 +37,9 @@ resource ibm_certificate_manager_import cert {
 ##############################################################################
 
 resource ibm_container_alb_cert cert {
-  cert_crn    = "${element(ibm_certificate_manager_import.cert.*.id, count.index)}"
-  secret_name = "imported-certificiate-secret"
-  cluster_id  = "${ibm_container_vpc_cluster.cluster.id}"  
+  cert_crn    = "${ibm_certificate_manager_import.cert.id}"
+  secret_name = "${var.imported_certificate_name}"
+  cluster_id  = "${var.cluster_id}"  
 }
 
 ##############################################################################
