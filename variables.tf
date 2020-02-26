@@ -75,7 +75,7 @@ variable machine_type {
 
 variable worker_count {
   description = "Number of workers per zone"
-  default     = 2
+  default     = 1
 }
 
 variable disable_pse {
@@ -93,4 +93,35 @@ variable only_private_albs {
   default     = false
 }
 
+##############################################################################
+
+
+##############################################################################
+# Worker Pool Variables
+# > Uncomment to add a worker pool in `optional_assets.tf`
+##############################################################################
+/*
+variable worker_pool_name {
+  description = "Worker pool name"
+  default     = "worker-pool-2"
+}
+
+variable pool_worker_count {
+  description = "Count for workers in worker pool"
+  default     = 1
+}
+*/
+##############################################################################
+
+
+##############################################################################
+# ALB Cert Name
+# > Uncomment to add ALB Cert module in `optional_assets.tf`
+##############################################################################
+/*
+variable alb_cert_name {
+  description = "Alb Cert Name"
+  default     = "imported-alb-cert"
+}
+*/
 ##############################################################################

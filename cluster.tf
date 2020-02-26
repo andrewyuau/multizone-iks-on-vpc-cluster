@@ -42,36 +42,3 @@ resource ibm_container_vpc_alb alb {
 }
 
 ##############################################################################
-
-
-##############################################################################
-# Cluster Pool Module
-##############################################################################
-
-module worker_pool {
-  source            = "./additional_assets/worker_pool"
-
-  worker_pool_name  = "todd"
-  ibm_region        = "${var.ibm_region}"
-  resource_group_id = "${data.ibm_resource_group.resource_group.id}"
-  cluster_name_id   = "${ibm_container_vpc_cluster.cluster.id}"
-  vpc_id            = "${data.ibm_is_vpc.vpc.id}"
-  pool_zones        = "${var.cluster_zones}"
-  worker_count      = 1
-
-}
-
-##############################################################################
-
-
-##############################################################################
-# ALB Cert Module
-##############################################################################
-module alb_cert {
-  source            = "./additional_assets/alb_cert"
-  cms_name          = "jv-iks-dev-cms"
-  resource_group_id = "${data.ibm_resource_group.resource_group.id}"
-  cluster_id        = "${ibm_container_vpc_cluster.cluster.id}"
-}
-
-##############################################################################
