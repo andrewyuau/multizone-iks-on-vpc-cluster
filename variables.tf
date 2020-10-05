@@ -96,6 +96,11 @@ variable only_private_albs {
   default     = false
 }
 
+variable entitlement {
+  description = "Enable Cloud Pak entitlements"
+  default     = "cloud_pak"
+}
+
 ##############################################################################
 
 
