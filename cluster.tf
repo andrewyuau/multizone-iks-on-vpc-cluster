@@ -6,6 +6,7 @@ resource ibm_container_vpc_cluster cluster {
 
   name               = "${var.cluster_name}"
   vpc_id             = "${data.ibm_is_vpc.vpc.id}"
+  kube_version       = "${var.kube_version}"
   flavor             = "${var.machine_type}"
   worker_count       = "${var.worker_count}"
   resource_group_id  = "${data.ibm_resource_group.resource_group.id}"
