@@ -36,22 +36,20 @@ variable vpc_name {
 variable cluster_zones {
   description = "List maps containing a zone number and the id of a subnet in that zone. Can be used to create a cluster on any number of subnets in a single region"
   type        = "list"
-    /*
-   example =[
+  default =[
     {
       zone     = 1
-      subnet_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      subnet_id = ibm_is_subnet.subnet1.id
     },
     {
       zone     = 2
-      subnet_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      subnet_id = ibm_is_subnet.subnet2.id
     },
     {
       zone     = 3
-      subnet_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      subnet_id = ibm_is_subnet.subnet3.id
     }
   ]
-  */
 }
 
 
