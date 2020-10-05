@@ -2,6 +2,13 @@
 # Create IKS on VPC Cluster
 ##############################################################################
 
+resource "ibm_resource_instance" "cos_instance" {
+  name     = "${var.cos_instance_name}"
+  service  = "cloud-object-storage"
+  plan     = "standard"
+  location = "global"
+}
+
 resource ibm_container_vpc_cluster cluster {
 
   name               = "${var.cluster_name}"
@@ -9,6 +16,8 @@ resource ibm_container_vpc_cluster cluster {
   kube_version       = "${var.kube_version}"
   flavor             = "${var.machine_type}"
   worker_count       = "${var.worker_count}"
+  entitlement       = "${var.entitlement}"
+  cos_instance_crn  = ibm_resource_instance.cos_instance.id
   resource_group_id  = "${data.ibm_resource_group.resource_group.id}"
 
   dynamic zones {
