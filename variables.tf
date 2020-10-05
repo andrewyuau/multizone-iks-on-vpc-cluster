@@ -67,8 +67,13 @@ variable cluster_name {
   default     = "iks-on-vpc-cluter"
 }
 
+variable kube_version {
+  description = "Version of Kubernetes or OpenShift, run ibmcloud ks versions"
+  default     = "4.4.20_openshift"
+}
+
 variable machine_type {
-  description = "Machine type for the IKS Cluster"
+  description = "Machine type for the IKS Cluster, run ibmcloud ks flavors --zone <ZONE>"
   default     = "b2.4x16"
 }
 
